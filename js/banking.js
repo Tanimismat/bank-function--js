@@ -7,14 +7,13 @@ const second = doubleIt(7);
  */
 
 
-function getInputValue() {
-    const depositeInput = document.getElementById('deposite-input');
-    const depositeAmountText = depositeInput.value;
-    const depositeAmount = parseFloat(depositeAmountText);
+function getInputValue(inputId) {
+    const inputField = document.getElementById(inputId);
+    const inputAmountText = inputField.value;
+    const amountValue = parseFloat(inputAmountText);
     // clean input field
-    depositeInput.value = '';
-    return depositeAmount;
-
+    inputField.value = '';
+    return amountValue;
 }
 
 
@@ -23,7 +22,7 @@ document.getElementById('deposite-button').addEventListener('click', function ()
     /* const depositeInput = document.getElementById('deposite-input');
     const depositeAmountText = depositeInput.value;
     const depositeAmount = parseFloat(depositeAmountText); */
-    const depositeAmount = getInputValue();
+    const depositeAmount = getInputValue('deposite-input');
 
     // get current deposite
     const depositeTotal = document.getElementById('deposite-total');
@@ -44,9 +43,10 @@ document.getElementById('deposite-button').addEventListener('click', function ()
 });
 
 document.getElementById('withdraw-button').addEventListener('click', function () {
-    const withdrawInput = document.getElementById('withdraw-input');
+    /* const withdrawInput = document.getElementById('withdraw-input');
     const withdrawAmountText = withdrawInput.value;
-    const withdrawAmount = parseFloat(withdrawAmountText);
+    const withdrawAmount = parseFloat(withdrawAmountText); */
+    const withdrawAmount = getInputValue('withdraw-input')
 
     // update withdraw total
     const withdrawTotal = document.getElementById('withdraw-total');
@@ -61,6 +61,4 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     const previousBalanceTotal = parseFloat(balanceTotalText);
     balanceTotal.innerText = previousBalanceTotal - withdrawAmount;
 
-    // clear withdrau input field
-    withdrawInput.value = '';
 });
